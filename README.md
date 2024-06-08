@@ -20,5 +20,5 @@ To assess the performance of the fine-tuned models, a validation set had to be c
 # Hyperparameter Configuration
 Fine-tuning LLMs requires testing different combinations of hyperparameters to achieve the best possible performance. For this project, 3 different sets of hyperparameters were tested. Each set was designed to test the performance of the model under varying training conditions. Both the Falcon and Llama-2 models were fine-tuned on each of the three sets. In total, six fine-tuned models were obtained in this study.
 
-<img src="images/hyperparameters.png" width="500" height="auto">
+<img src="Images/hyperparameters.png" width="500" height="auto">
 
