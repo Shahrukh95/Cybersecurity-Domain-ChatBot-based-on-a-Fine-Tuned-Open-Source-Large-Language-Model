@@ -9,13 +9,7 @@ Each base model was finetuned on three different sets of hyperparameters to eval
 # Cybersecurity Training Dataset
 
 ## OWASP Top 10
-THe web page content of Top 10 API and Mobile vulnerabilities were scraped. The raw data was fed into GPT-4 Turbo to convert the raw content into question-answer pairs. The following vulnerabilites were collected:
-
-<img src="Images/API Vulnerabilities.png" width="500" height="auto">
-
-<img src="Images/Mobile Vulnerabilities.png" width="500" height="auto">
-
-A total of 273 question-answer pairs were obtained.
+The web page content of each of the [Top 10 API](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) and [Mobile](https://owasp.org/www-project-mobile-top-10/2023-risks/) vulnerabilities were scraped. This content was fed into GPT-4 Turbo to convert it into question-answer pairs. A total of 273 question-answer pairs were obtained.
 
 ## NVD
 This database contains data from the Common Vulnerabilities and Exposures (CVE) Program which uniquely identifies vulnerabilities with a CVE identifier (ID) and associates specific versions of code bases to those vulnerabilities. In this project, CVEs in four domains were chosen: Android, Databases, Windows and Web Servers. The chosen CVEs from the categories mentioned above were reported between October 2022 to December 2023. This ensured that the models were fine-tuned only on recent cybersecurity data. These were obtained using NVD's 2.0 API. The implementation is available in the "Data Generator" folder. 18,861 question-answer pairs were obtained.
