@@ -1,8 +1,6 @@
 # Cybersecurity Domain ChatBot based on a Fine-Tuned Open Source Large Language Model
 
-The objective of this project was to develop an LLM powered chatbot that is fine-tuned with recent cybersecurity knowledge. Although new vulnerabilities are reported constantly and publicly by security experts f.e. as documented in the National Vulnerability Database (NVD), this project aims to determine the effectiveness of open-source LLMs in terms of learning the underlying cause and potential harm of such vulnerabilities if users are exposed to them.
-
-The methodology involves fine-tuning two open-source LLMs: Llama-2 and Falcon. The Falcon model is highly effective for question-answering tasks and outperforms several other models such as StableLM, RedPajama and MPT. The LLaMa-2 models have demonstrated even better performance and cost efficiency as compared to other opensource LLMs including Falcon itself, according to Meta AI's benchmarks. The models fine-tuned in this study were Falcon-7B and Llama-2-7b-chat-hf.
+The objective of this project was to develop an LLM powered chatbot that is fine-tuned with recent cybersecurity knowledge. Although new vulnerabilities are reported constantly and publicly by security experts, this project aims to determine the effectiveness of open-source LLMs in terms of learning the underlying cause and potential harm of such vulnerabilities if users are exposed to them. The methodology involves fine-tuning two open-source LLMs: Llama-2 and Falcon. The Falcon model is highly effective for question-answering tasks and outperforms several other models such as StableLM, RedPajama and MPT. The LLaMa-2 models have demonstrated even better performance and cost efficiency as compared to other opensource LLMs including Falcon itself, according to Meta AI's benchmarks. The models fine-tuned in this study were Falcon-7B and Llama-2-7b-chat-hf.
 
 A dataset consisting of question-answer pairs referencing the latest publicly reported vulnerabilities in 2023 was required to fine-tune the models. Such a dataset was not found to be publicly available. Therefore, a novel database containing vulnerability information in the form of question-answer pairs was compiled using publicly available sources. These sources were the NVD and the OWASP 2023 Top 10 API and Mobile vulnerabilities. The dataset was made public and posted on HuggingFace. This was a significant contribution of this study in the LLM and cybersecurity space as the comprehensive dataset containing 19,135 rows can be used in future research involving fine-tuning strategies.
 
@@ -16,3 +14,15 @@ THe web page content of Top 10 API and Mobile vulnerabilities were scraped. The 
 <img src="Images/API Vulnerabilities.png" width="500" height="auto">
 
 <img src="Images/Mobile Vulnerabilities.png" width="500" height="auto">
+
+A total of 273 question-answer pairs were obtained.
+
+## NVD
+This database contains data from the Common Vulnerabilities and Exposures (CVE) Program which uniquely identifies vulnerabilities with a CVE identifier (ID) and associates specific versions of code bases to those vulnerabilities. In this project, CVEs in four domains were chosen: Android, Databases, Windows and Web Servers. The chosen CVEs from the categories mentioned above were reported between October 2022 to December 2023. This ensured that the models were fine-tuned only on recent cybersecurity data. These were obtained using NVD's 2.0 API. The implementation is available in the "Data Generator" folder. 18,861 question-answer pairs were obtained.
+
+# Validation Set
+To assess the performance of the fine-tuned models, a validation set had to be created. This was constructed by randomly selecting 20% rows from each individual OWASP and NVD domains. The total number of rows in the validation set amounted to 3824. The validation set was constructed by taking question-answer pairs from the training set and subsequently rephrased using GPT-4 Turbo. This ensured that the evaluation was conducted on a dataset that the fine-tuned models had not seen during training.
+
+# Hyperparameter Configuration
+
+
