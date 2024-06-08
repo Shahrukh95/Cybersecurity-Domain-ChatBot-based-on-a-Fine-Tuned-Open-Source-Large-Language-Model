@@ -25,5 +25,6 @@ Lamini/*
 *.bin
 *.pyc
 
+*.pdf
 
 nohup.out
