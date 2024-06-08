@@ -18,5 +18,7 @@ This database contains data from the Common Vulnerabilities and Exposures (CVE) 
 To assess the performance of the fine-tuned models, a validation set had to be created. This was constructed by randomly selecting 20% rows from each individual OWASP and NVD domains. The total number of rows in the validation set amounted to 3824. The validation set was constructed by taking question-answer pairs from the training set and subsequently rephrased using GPT-4 Turbo. This ensured that the evaluation was conducted on a dataset that the fine-tuned models had not seen during training.
 
 # Hyperparameter Configuration
+Fine-tuning LLMs requires testing different combinations of hyperparameters to achieve the best possible performance. For this project, 3 different sets of hyperparameters were tested. Each set was designed to test the performance of the model under varying training conditions. Both the Falcon and Llama-2 models were fine-tuned on each of the three sets. In total, six fine-tuned models were obtained in this study.
 
+<img src="images/hyperparameters.png" width="500" height="auto">
 
