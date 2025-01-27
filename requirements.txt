@@ -1,0 +1,8 @@
+requests
+python-dotenv
+torch
+datasets
+transformers
+peft
+trl
+huggingface_hub

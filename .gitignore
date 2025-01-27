@@ -3,11 +3,6 @@
 
 cuda_config.ipynb
 
-Lamini/*
-# Lamini/__pycache__/
-# Lamini/Training/Output-Models/
-# Lamini/Training/__pycache__/
-
 
 **/cybersecurity-Llama-2-7b-chat-hf/
 
@@ -17,6 +12,8 @@ Lamini/*
 **/wandb/
 **/pycache/
 Defence/
+Date Checker/
+env/
 
 **/*-env/
 **/*_env/
