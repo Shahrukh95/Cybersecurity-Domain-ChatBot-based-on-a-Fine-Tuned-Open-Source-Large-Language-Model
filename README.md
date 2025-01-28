@@ -109,15 +109,19 @@ The evaluation was performed in two steps. In the first step, the respective bas
 # Usage
 Fine-tuning and evaluation are done in the same jupyter files:
 
-```Falcon-7B\Base Falcon 7-B\Falcon-7B-base-inference.ipynb
+```
+Falcon-7B\Base Falcon 7-B\Falcon-7B-base-inference.ipynb
 Falcon-7B\Fine-tuning Falcon-7B\Aggressive Learning (Hyperparameter Set 3)\main.ipynb
 Falcon-7B\Fine-tuning Falcon-7B\Baseline Configuration (Hyperparameter Set 1)\main.ipynb
-Falcon-7B\Fine-tuning Falcon-7B\Gradual Fine-tuning (Hyperparameter Set 2)\main.ipynb```
+Falcon-7B\Fine-tuning Falcon-7B\Gradual Fine-tuning (Hyperparameter Set 2)\main.ipynb
+```
 
-```Llama-2-7B\Base Llama-2-7B\Llama-2-7B-base-inference.ipynb
+```
+Llama-2-7B\Base Llama-2-7B\Llama-2-7B-base-inference.ipynb
 Llama-2-7B\Fine-tuning Llama-2-7B\Aggressive Learning (Hyperparameter Set 3)\llama-2.ipynb
 Llama-2-7B\Fine-tuning Llama-2-7B\Baseline Configuration (Hyperparameter Set 1)\llama-2.ipynb
-Llama-2-7B\Fine-tuning Llama-2-7B\Gradual Fine-tuning (Hyperparameter Set 2)\llama-2.ipynb```
+Llama-2-7B\Fine-tuning Llama-2-7B\Gradual Fine-tuning (Hyperparameter Set 2)\llama-2.ipynb
+```
 
 
 # Results
