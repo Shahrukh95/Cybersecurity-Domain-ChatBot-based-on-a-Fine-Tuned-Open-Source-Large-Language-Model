@@ -1,5 +1,5 @@
 # Cybersecurity domain ChatBot based on a fine-tuned open-source Large Language Model
-LLaMA 2-7B and Falcon-7B were fine-tuned on a cybersecurity specific dataset to evaluate whether these models can effectively answer questions in the cybersecurity domain. The dataset was manually compiled with Common Vulnerabilities and Exposures (CVE) records in the National Vulnerability Database ([NVD](https://nvd.nist.gov/)), and resources from [OWASP](https://owasp.org/www-project-top-ten/). The fine-tuning process involved using QLoRA with 4-bit quantization for memory efficient training and inference.
+LLaMA 2-7B and Falcon-7B were fine-tuned on a cybersecurity specific dataset to evaluate whether these models can effectively answer questions in the cybersecurity domain. The dataset was manually compiled from Common Vulnerabilities and Exposures (CVE) records in the National Vulnerability Database ([NVD](https://nvd.nist.gov/)), and resources from [OWASP](https://owasp.org/www-project-top-ten/). The fine-tuning process involved using QLoRA with 4-bit quantization for memory efficient training and inference.
 
 # Quick Use
 To quickly run the fine-tuned models with QLoRA created in this project, you can follow the example below. The model can be loaded either locally or on Google Colab, with the latter being the preferred option.
@@ -108,8 +108,6 @@ The validation dataset is available at: ```Datasets/Validation Set.json```
 
 # Hyperparameter Configuration
 The hyperparameters were configured as follows:
-
-## Hyperparameter Configuration
 
 | Parameter                     | Set 1 (Baseline Configuration) | Set 2 (Gradual Fine-tuning) | Set 3 (Aggressive Learning) |
 |--------------------------------|-------------------------------|-----------------------------|-----------------------------|
