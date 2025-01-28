@@ -6,3 +6,5 @@ transformers
 peft
 trl
 huggingface_hub
+accelerate
+bitsandbytes
