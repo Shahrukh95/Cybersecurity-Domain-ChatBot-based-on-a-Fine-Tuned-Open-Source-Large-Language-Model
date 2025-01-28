@@ -6,5 +6,6 @@ transformers
 peft
 trl
 huggingface_hub
+ipywidgets
 accelerate
 bitsandbytes
