@@ -88,13 +88,13 @@ The NVD (National Vulnerability Database) provides an API to collect CVEs (Commo
 
 The raw text of all collected vulnerabilities was converted into a question-answer pair format using GPT-4 Turbo.
 
-The training dataset is available in the file: ```Data Preprocessing/Training Set.xlsx```
+The training dataset is available in the file: ```Datasets/Training Set.xlsx```
 Its structure is as follows:
 
 # Validation Set
 The validation set was created by sampling 20% of the question-answer pairs from each category of the training set (NVD + OWASP). These pairs were then rephrased using GPT-3.5 Turbo to create semantically identical but syntactically different question-answer pairs. The validation set was used to evaluate the fine-tuned models through the LLM-as-a-judge method.
 
-The validation dataset is available at: ```Data Preprocessing/Validation Set.json```
+The validation dataset is available at: ```Datasets/Validation Set.json```
 
 
 
