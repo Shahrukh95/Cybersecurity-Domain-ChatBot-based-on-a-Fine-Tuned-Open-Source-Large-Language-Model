@@ -35,6 +35,7 @@ peft_base_model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True # Enable custom model architectures
 )
 ```
+Load the QLoRA adapter and tokenizer
 
 ```
 # Load the PEFT (QLoRA) adapter
@@ -48,7 +49,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model = model.to(device)
 ```
 
-
+Make a pipeline for generating response
 ```
 # Response generator
 def generate_response(prompt, max_length=256):
@@ -66,6 +67,7 @@ def generate_response(prompt, max_length=256):
     return response
 ```
 
+Ask a svybersecurity related question preerably in the domians mentioned in the "Dataset" section below.
 ```
 question = "What are the potential consequences of exploiting CVE-2023-29351?"
 print("Question:", question)
@@ -107,19 +109,21 @@ The evaluation was performed in two steps. In the first step, the respective bas
 # Usage
 Fine-tuning and evaluation are done in the same jupyter files:
 
-`Falcon-7B\Base Falcon 7-B\Falcon-7B-base-inference.ipynb`
-`Falcon-7B\Fine-tuning Falcon-7B\Aggressive Learning (Hyperparameter Set 3)\main.ipynb`
-`Falcon-7B\Fine-tuning Falcon-7B\Baseline Configuration (Hyperparameter Set 1)\main.ipynb`
-`Falcon-7B\Fine-tuning Falcon-7B\Gradual Fine-tuning (Hyperparameter Set 2)\main.ipynb`
+```Falcon-7B\Base Falcon 7-B\Falcon-7B-base-inference.ipynb
+Falcon-7B\Fine-tuning Falcon-7B\Aggressive Learning (Hyperparameter Set 3)\main.ipynb
+Falcon-7B\Fine-tuning Falcon-7B\Baseline Configuration (Hyperparameter Set 1)\main.ipynb
+Falcon-7B\Fine-tuning Falcon-7B\Gradual Fine-tuning (Hyperparameter Set 2)\main.ipynb```
 
-`Llama-2-7B\Base Llama-2-7B\Llama-2-7B-base-inference.ipynb`
-`Llama-2-7B\Fine-tuning Llama-2-7B\Aggressive Learning (Hyperparameter Set 3)\llama-2.ipynb`
-`Llama-2-7B\Fine-tuning Llama-2-7B\Baseline Configuration (Hyperparameter Set 1)\llama-2.ipynb`
-`Llama-2-7B\Fine-tuning Llama-2-7B\Gradual Fine-tuning (Hyperparameter Set 2)\llama-2.ipynb`
+```Llama-2-7B\Base Llama-2-7B\Llama-2-7B-base-inference.ipynb
+Llama-2-7B\Fine-tuning Llama-2-7B\Aggressive Learning (Hyperparameter Set 3)\llama-2.ipynb
+Llama-2-7B\Fine-tuning Llama-2-7B\Baseline Configuration (Hyperparameter Set 1)\llama-2.ipynb
+Llama-2-7B\Fine-tuning Llama-2-7B\Gradual Fine-tuning (Hyperparameter Set 2)\llama-2.ipynb```
 
 
 # Results
-Decent increase in the knowledge of the fine-tuned models was observered. However, I think a RAG based approach would be more suitable for this use-case because increasing base knowledge of a model with fine-tuning would require a very large dataset. CVEs are always being reported. Having a good pre-trained model with RAG based access to recent vulnerabilities would be more effective.
+Decent increase in the knowledge of the fine-tuned models was observered. However, the model hallucinated quite often. Answers may not always end at the right point even with deterministic token decoding enabled (as opposed to random sampling). The model keeps generating until the token limit is reached.
+
+I think a RAG based approach would be more suitable for this use-case because increasing base knowledge of a model with fine-tuning would require a very large and high-quality dataset. CVEs are being reported all the time. Having a good pre-trained model with RAG based access to recent vulnerabilities would be more effective.
 
 # Accessibility
 The fine-tuned models and the dataset are made public on [HuggingFace](https://huggingface.co/shahrukh95). Feel free to access them and ask about vulnerabilities in Android, Databases, Windows and Web Servers from October 2022 to December 2023.
