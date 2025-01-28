@@ -1,10 +1,10 @@
 # Cybersecurity Domain ChatBot based on a Fine-Tuned Open Source Large Language Model
 LLaMA 2-7B and Falcon-7B were fine-tuned on a cybersecurity-specific dataset to evaluate whether these models can effectively answer questions in the cybersecurity domain. The dataset was manually curated from Common Vulnerabilities and Exposures (CVE) records in the National Vulnerability Database (NVD) and resources from OWASP. The fine-tuning process utilized QLoRA with 4-bit quantization, optimizing the models for efficient inference while maintaining accuracy.
 
-# Quick Use:
+# Quick Use
 To quickly run the fine-tuned models available on HuggingFace, you can load the model locally or on Google Colab and start making inferences. The following example demonstrates how to load one of the models with QLoRA:
 
-```
+```python
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel, PeftConfig
 import torch
@@ -34,12 +34,15 @@ peft_base_model = AutoModelForCausalLM.from_pretrained(
 ```
 Load the QLoRA adapter and tokenizer
 
-```
+```python
 # Load the PEFT (QLoRA) adapter
 model = PeftModel.from_pretrained(peft_base_model, PEFT_MODEL)
 
 # Load the tokenizer
 tokenizer = AutoTokenizer.from_pretrained(PEFT_MODEL)
+# Set pad_token_id to eos_token_id
+if tokenizer.pad_token_id is None:
+    tokenizer.pad_token_id = tokenizer.eos_token_id
 
 # Move the model to GPU
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -47,25 +50,27 @@ model = model.to(device)
 ```
 
 Make a pipeline for generating response
-```
+
+```python
 # Response generator
 def generate_response(prompt, max_length=256):
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
     with torch.no_grad():
         outputs = model.generate(
-            **inputs,
-            max_new_tokens=max_length,
-            temperature=0.7, # Control randomness (lower = more deterministic)
-            top_k=50,
-            top_p=0.9, # Use nucleus sampling (diverse but controlled output)
-            do_sample=True # Enable sampling for diversity
-        )
+          **inputs,
+          max_new_tokens=256,  # Limit the output length for QA tasks
+          eos_token_id=tokenizer.eos_token_id,  # Explicitly set the stopping point
+          pad_token_id=tokenizer.pad_token_id,  # Explicitly include pad token
+          do_sample=False  # Use deterministic greedy decoding for QA tasks. No need for temp, top_k and top_p.
+      )
+
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
 ```
 
 Ask a cybersecurity related question preferably in the domains mentioned in the **Dataset** section below.
-```
+
+```python
 question = "What are the potential consequences of exploiting CVE-2023-29351?"
 print("Question:", question)
 answer = generate_response(question)
