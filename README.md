@@ -91,30 +91,20 @@ The raw text of all collected vulnerabilities was converted into a question-answ
 The training dataset is available in the file: ```Datasets/Training Set.xlsx```
 It's structure is as follows:
 
-| Domain       | Question-Answer Pairs |
-|-------------|----------------------|
-| Windows     | 4488                 |
-| Android     | 5054                 |
-| Web Servers | 4704                 |
-| Database    | 4615                 |
-
+| Domain          | Question-Answer Pairs |
+|----------------|----------------------|
+| Windows        | 4488                 |
+| Android        | 5054                 |
+| Web Servers    | 4704                 |
+| Database       | 4615                 |
+| OWASP Top 10 Mobile | 111            |
+| OWASP Top 10 API    | 162            |
+| **Total**      | **19,134**            |
 
 # Validation Set
 The validation set was created by sampling 20% of the question-answer pairs from each category of the training set (NVD + OWASP). These pairs were then rephrased using GPT-3.5 Turbo to create semantically identical but syntactically different question-answer pairs. The validation set was used to evaluate the fine-tuned models through the LLM-as-a-judge method.
 
 The validation dataset is available at: ```Datasets/Validation Set.json```
-It's structure is as follows:
-
-| Domain       | Rows in Validation Set | % of Original Dataset |
-|-------------|------------------------|------------------------|
-| Windows     | 897                     | 19.99%                 |
-| Android     | 1010                    | 19.98%                 |
-| OWASP Mobile | 22                     | 19.82%                 |
-| Web Servers | 940                     | 19.98%                 |
-| OWASP API   | 32                      | 19.75%                 |
-| Database    | 923                     | 20.00%                 |
-| **Total**   | **3824**                 | **19.99%**              |
-
 
 # Hyperparameter Configuration
 The hyperparameters were configured as follows:
